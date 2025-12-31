@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>OBS Anket Botu V4.0</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; background: #f4f4f9; color: #333; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: move;
+            background: linear-gradient(135deg, #28a745, #218838); /* Rengi yeşil yaptım, yeni sürüm olduğu belli olsun */
+            color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 20px 0;
+            transition: transform 0.2s;
+        }
+        .button:hover { transform: scale(1.05); }
+        .instructions { text-align: left; margin-top: 30px; background: #eee; padding: 20px; border-radius: 8px; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 OBS Anket Botu V4.0</h1>
+        <p>Hatalar düzeltildi! Aşağıdaki butonu yer imlerine sürükleyin.</p>
+
+        <a class="button" href="javascript:(function(){let t=0;function s(d){const p=new Set();d.querySelectorAll('input[type=%22radio%22]').forEach(r=>{if(!p.has(r.name)){const g=Array.from(d.querySelectorAll('input[type=%22radio%22][name=%22'+r.name+'%22]'));const target=g.find(i=>i.value==%225%22||i.id.includes(%225%22))||g[g.length-1];if(target){target.click();p.add(r.name);t++}}})}s(document);document.querySelectorAll('iframe').forEach(f=>{try{s(f.contentDocument||f.contentWindow.document)}catch(e){}});alert(t+' adet benzersiz soru işaretlendi!');})();">
+            ANKETİ DOLDUR (V4)
+        </a>
+
+        <div class="instructions">
+            <strong>Nasıl Güncellenir?</strong><br>
+            1. Eğer eski butonu eklediyseniz, yer imleri çubuğundan üzerine sağ tıklayıp <b>Sil</b> deyin.<br>
+            2. Yukarıdaki yeni yeşil butonu tutup yer imlerine sürükleyin.<br>
+            3. OBS'de anket sayfasındayken tıklayın.
+        </div>
+    </div>
+</body>
+</html>
