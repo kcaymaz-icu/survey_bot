@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OBS Anket Botu V5.0</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: sans-serif;
@@ -23,16 +19,12 @@
         }
 
         .container {
-            max-width: 560px;
+            max-width: 580px;
             width: 100%;
             background: #1a1a1a;
             border: 1px solid #2e2e2e;
             border-radius: 16px;
             padding: 36px 32px;
-        }
-
-        .header {
-            margin-bottom: 28px;
         }
 
         .version-badge {
@@ -48,84 +40,110 @@
             letter-spacing: 0.04em;
         }
 
-        h1 {
-            font-size: 22px;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 6px;
-        }
+        h1 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+        .subtitle { font-size: 14px; color: #888; line-height: 1.5; margin-bottom: 28px; }
 
-        .subtitle {
-            font-size: 14px;
-            color: #888;
-            line-height: 1.5;
-        }
+        .divider { border: none; border-top: 1px solid #2e2e2e; margin: 24px 0; }
 
-        .btn-wrap {
-            margin: 28px 0;
-            text-align: center;
-        }
-
-        .main-btn {
-            display: inline-block;
-            padding: 16px 36px;
-            font-size: 16px;
-            font-weight: 700;
-            background: #2d6a4f;
-            color: #ffffff;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background 0.15s, transform 0.1s;
-            letter-spacing: 0.02em;
-        }
-
-        .main-btn:hover {
-            background: #1b4332;
-            transform: scale(1.03);
-        }
-
-        .main-btn:active {
-            transform: scale(0.98);
-        }
-
-        .result-box {
-            display: none;
-            margin-top: 16px;
-            background: #1a2e1a;
-            border: 1px solid #2d6a4f;
-            border-radius: 10px;
-            padding: 14px 18px;
-            font-size: 14px;
-            color: #4caf7d;
-            text-align: center;
-        }
-
-        .result-box.error {
-            background: #2e1a1a;
-            border-color: #6a2d2d;
-            color: #cf6679;
-        }
-
-        .divider {
-            border: none;
-            border-top: 1px solid #2e2e2e;
-            margin: 24px 0;
-        }
-
-        .features {
-            margin-bottom: 24px;
-        }
-
-        .features-title {
+        .section-title {
             font-size: 11px;
             font-weight: 600;
             color: #555;
             text-transform: uppercase;
             letter-spacing: 0.06em;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
         }
 
+        /* BOOKMARKLET BUTTON */
+        .bm-wrap {
+            background: #111;
+            border: 1px dashed #2d6a4f;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .bm-btn {
+            display: inline-block;
+            padding: 14px 28px;
+            font-size: 15px;
+            font-weight: 700;
+            background: #2d6a4f;
+            color: #fff;
+            border-radius: 10px;
+            text-decoration: none;
+            cursor: move;
+            user-select: none;
+            transition: background 0.15s;
+        }
+        .bm-btn:hover { background: #1b4332; }
+
+        .bm-hint {
+            font-size: 12px;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        /* STEPS */
+        .steps { margin-bottom: 8px; }
+
+        .step {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            padding: 10px 0;
+            border-bottom: 1px solid #222;
+        }
+        .step:last-child { border-bottom: none; }
+
+        .step-num {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #2d6a4f;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .step-body strong {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #ccc;
+            margin-bottom: 3px;
+        }
+        .step-body span { font-size: 12px; color: #666; line-height: 1.6; }
+
+        .kbd {
+            display: inline-block;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 5px;
+            padding: 1px 7px;
+            font-size: 11px;
+            font-family: monospace;
+            color: #bbb;
+        }
+
+        .tip-box {
+            background: #1a1f2e;
+            border: 1px solid #2a3550;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 12px;
+            color: #6a8fc4;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        /* FEATURES */
         .feature {
             display: flex;
             gap: 12px;
@@ -133,58 +151,93 @@
             padding: 8px 0;
             border-bottom: 1px solid #222;
         }
+        .feature:last-child { border-bottom: none; }
+        .feature-icon { font-size: 16px; margin-top: 1px; flex-shrink: 0; }
+        .feature-text strong { display: block; font-size: 13px; font-weight: 600; color: #ccc; margin-bottom: 2px; }
+        .feature-text span { font-size: 12px; color: #666; line-height: 1.5; }
 
-        .feature:last-child {
-            border-bottom: none;
-        }
-
-        .feature-icon {
-            font-size: 16px;
-            margin-top: 1px;
-            flex-shrink: 0;
-        }
-
-        .feature-text strong {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            color: #ccc;
-            margin-bottom: 2px;
-        }
-
-        .feature-text span {
-            font-size: 12px;
-            color: #666;
-            line-height: 1.5;
-        }
-
-        .footer {
-            font-size: 12px;
-            color: #444;
-            text-align: center;
-        }
+        .footer { font-size: 12px; color: #444; text-align: center; }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <div class="version-badge">V5.0</div>
-            <h1>OBS Anket Botu</h1>
-            <p class="subtitle">Aşağıdaki butona tıkla — sayfadaki tüm anket soruları otomatik doldurulur.</p>
+
+        <div class="version-badge">V5.0</div>
+        <h1>OBS Anket Botu</h1>
+        <p class="subtitle">Aşağıdaki yeşil butonu yer imleri çubuğuna sürükle. Artık OBS anket sayfasındayken tek tıkla doldurabilirsin.</p>
+
+        <hr class="divider" style="margin-top:0;">
+
+        <!-- KURULUM -->
+        <div class="section-title">⚙️ Kurulum — bir kez yap, hep hazır</div>
+
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-body">
+                    <strong>Yer imleri çubuğunu aç</strong>
+                    <span>
+                        <span class="kbd">Ctrl</span> + <span class="kbd">Shift</span> + <span class="kbd">B</span> &nbsp;(Windows / Linux)
+                        &nbsp;&nbsp;veya&nbsp;&nbsp;
+                        <span class="kbd">Cmd</span> + <span class="kbd">Shift</span> + <span class="kbd">B</span> &nbsp;(Mac)
+                    </span>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-body">
+                    <strong>Butonu sürükle</strong>
+                    <span>Aşağıdaki yeşil butonu tutup yer imleri çubuğuna bırak. Kurulum tamam.</span>
+                </div>
+            </div>
         </div>
 
-        <div class="btn-wrap">
-            <button class="main-btn" onclick="runBot()">
-                ▶ ANKETİ DOLDUR
-            </button>
-            <div class="result-box" id="result"></div>
+        <div class="bm-wrap">
+            <a class="bm-btn" id="bm-link" href="#">▶ ANKETİ DOLDUR (V5)</a>
+            <div class="bm-hint">☝️ Bu butonu yer imleri çubuğuna sürükle</div>
         </div>
 
         <hr class="divider">
 
-        <div class="features">
-            <div class="features-title">Bu sürümde neler var</div>
+        <!-- KULLANIM -->
+        <div class="section-title">🚀 Kullanım — her seferinde</div>
 
+        <div class="steps" style="margin-bottom:24px;">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-body">
+                    <strong>OBS'de anket sayfasını aç</strong>
+                    <span>Değerlendirme / anket sayfasına git, sayfanın tamamen yüklenmesini bekle.</span>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-body">
+                    <strong>Yer imindeki butona tıkla</strong>
+                    <span>Yer imleri çubuğundaki <strong>▶ ANKETİ DOLDUR</strong> butonuna tıkla. Bot anket sayfasını anında doldurur.</span>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-body">
+                    <strong>Formu gönder</strong>
+                    <span>Ekranda kaç sorunun doldurulduğunu gösteren bir özet çıkar. Kontrol edip formu gönder.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="tip-box">
+            💡 Her kullanımda 3–5 arası rastgele puanlar seçilir, tek düze görünmez. Bu sayfanın linkini paylaşırsan arkadaşların da kurabilir.
+        </div>
+
+        <hr class="divider">
+
+        <!-- FEATURES -->
+        <div class="section-title">✨ V5 yenilikleri</div>
+        <div style="margin-bottom:24px;">
             <div class="feature">
                 <span class="feature-icon">🎲</span>
                 <div class="feature-text">
@@ -192,7 +245,6 @@
                     <span>Her soru için 3, 4 veya 5 rastgele seçilir. Daha doğal görünür.</span>
                 </div>
             </div>
-
             <div class="feature">
                 <span class="feature-icon">⚡</span>
                 <div class="feature-text">
@@ -200,7 +252,6 @@
                     <span>Tıklamanın yanı sıra change eventi de gönderilir. Daha fazla OBS sistemiyle uyumlu.</span>
                 </div>
             </div>
-
             <div class="feature">
                 <span class="feature-icon">🛡️</span>
                 <div class="feature-text">
@@ -208,7 +259,6 @@
                     <span>Cross-origin hataları sessizce atlanır, script çökmez.</span>
                 </div>
             </div>
-
             <div class="feature">
                 <span class="feature-icon">📊</span>
                 <div class="feature-text">
@@ -218,80 +268,13 @@
             </div>
         </div>
 
-        <div class="footer">
-            kcaymaz-icu &mdash; OBS Anket Botu
-        </div>
+        <hr class="divider">
+        <div class="footer">kcaymaz-icu &mdash; OBS Anket Botu V5.0</div>
     </div>
 
     <script>
-        function runBot() {
-            var total = 0;
-            var found = 0;
-
-            function rand35() {
-                return Math.floor(Math.random() * 3) + 3;
-            }
-
-            function fill(doc) {
-                var processed = new Set();
-                var radios = doc.querySelectorAll('input[type="radio"]');
-
-                radios.forEach(function(radio) {
-                    if (!processed.has(radio.name)) {
-                        var group = Array.from(
-                            doc.querySelectorAll('input[type="radio"][name="' + radio.name + '"]')
-                        );
-                        found++;
-
-                        var score = rand35();
-
-                        var target = group.find(function(i) {
-                            return i.value == score || i.id.includes(score);
-                        });
-
-                        if (!target) {
-                            target = group.find(function(i) {
-                                return parseInt(i.value) >= 3;
-                            });
-                        }
-
-                        if (!target) {
-                            target = group[Math.floor(Math.random() * group.length)];
-                        }
-
-                        if (target) {
-                            target.click();
-                            target.dispatchEvent(new Event('change', { bubbles: true }));
-                            processed.add(radio.name);
-                            total++;
-                        }
-                    }
-                });
-            }
-
-            try {
-                fill(document);
-            } catch(e) {}
-
-            document.querySelectorAll('iframe').forEach(function(frame) {
-                try {
-                    fill(frame.contentDocument || frame.contentWindow.document);
-                } catch(e) {}
-            });
-
-            var resultEl = document.getElementById('result');
-            resultEl.style.display = 'block';
-
-            if (total > 0) {
-                resultEl.className = 'result-box';
-                resultEl.innerHTML =
-                    '✅ Tamamlandı! &nbsp;|&nbsp; Bulunan soru: <strong>' + found +
-                    '</strong> &nbsp;|&nbsp; İşaretlenen: <strong>' + total + '</strong>';
-            } else {
-                resultEl.className = 'result-box error';
-                resultEl.innerHTML = '⚠️ Hiç soru bulunamadı. Anket sayfasında olduğundan emin ol.';
-            }
-        }
+        var code = '(function(){var t=0,found=0;function rand35(){return Math.floor(Math.random()*3)+3;}function fill(d){var p=new Set();d.querySelectorAll(\'input[type="radio"]\').forEach(function(r){if(!p.has(r.name)){var g=Array.from(d.querySelectorAll(\'input[type="radio"][name="\'+r.name+\'"]\'));found++;var s=rand35();var target=g.find(function(i){return i.value==s||i.id.includes(s);});if(!target)target=g.find(function(i){return parseInt(i.value)>=3;});if(!target)target=g[Math.floor(Math.random()*g.length)];if(target){target.click();target.dispatchEvent(new Event("change",{bubbles:true}));p.add(r.name);t++;}}});}try{fill(document);}catch(e){}document.querySelectorAll("iframe").forEach(function(f){try{fill(f.contentDocument||f.contentWindow.document);}catch(e){}});alert("OBS Anket Botu V5\n\nBulunan soru: "+found+"\nIsaretlenen: "+t+"\n\nRastgele puanlar (3-5) secildi.");})()';
+        document.getElementById('bm-link').href = 'javascript:' + code;
     </script>
 </body>
 </html>
